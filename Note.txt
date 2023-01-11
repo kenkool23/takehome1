@@ -1,0 +1,12 @@
+Run terraform init
+cd terraform && terraform apply  (To create the cluster)
+aws eks update-kubeconfig --name Unqork-cluster --region us-east-1
+cd k8s-resources && terraform apply (To create k8s resources)
+Run kubectl get nodes (To check access to k8s componenet with 'kubectl')
+kubectl get pods (To view nginx pods)
+kubectl get svc (To view the service exposing the deployment)
+kubectl get ingress
+
+EKS managed node-group was used for easy deployment and rollout of updates.
+
+Assumptions: Following components are already installed: kubectl, aws-cli, terraform cli,

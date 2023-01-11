@@ -1,0 +1,3 @@
+Assumptions To Use Ansible to update patches
+I assume that ssh connection has been established between Ansible host and the k8s nodes.
+I will implement dynamic inventory, which will discover nodes based on tags, to allow dynamic discovery of nodes.

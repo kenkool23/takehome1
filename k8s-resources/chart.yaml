@@ -1,0 +1,27 @@
+clusterName: Unqork-cluster
+
+# the name of the IngressClass
+ingressClass: aws-alb
+
+serviceMonitor:
+  enabled: true
+serviceAccount:
+  create: false
+  name: aws-load-balancer-controller
+
+ingressClassParams:
+  spec:
+    scheme: internet-facing
+    group:
+      name: eks-alb-ingress-demo
+    loadBalancerAttributes:
+      - key: deletion_protection.enabled
+        value: "true" # deletion of all Ingress resources won't delete the ALB
+      - key: idle_timeout.timeout_seconds
+        value: "120"
+      - key: routing.http.drop_invalid_header_fields.enabled
+        value: "true"
+      - key: routing.http2.enabled
+        value: "true"
+      - key: routing.http.preserve_host_header.enabled
+        value: "true"
